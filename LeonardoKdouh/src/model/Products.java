@@ -1,6 +1,5 @@
 package model;
 
-import interfaces.IDiscount;
 
 public abstract class Products {
 
