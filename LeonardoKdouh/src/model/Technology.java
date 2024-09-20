@@ -23,8 +23,8 @@ public abstract class Technology extends Products {
 
     @Override
     public String toString() {
-        return super.toString() + "Technology{" +
-                "factoryName='" + factoryName + '\'' +
-                '}';
+        return  "Technology - Product:" +
+                "factoryName = " + factoryName + '\'' +
+                '}' + super.toString();
     }
 }

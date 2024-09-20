@@ -12,6 +12,7 @@ public abstract class Furniture extends Products{
 
     @Override
     public String toString() {
-        return "Furniture{}";
+        return "Furniture - Product: "
+                + super.toString();
     }
 }

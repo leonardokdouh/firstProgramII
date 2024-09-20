@@ -1,6 +1,8 @@
 package model;
 
-public class Printer extends Technology{
+import interfaces.IDiscount;
+
+public class Printer extends Technology  implements IDiscount {
 
 private int printsPerMinute;
 
@@ -20,8 +22,17 @@ public Printer(int id, int stock, String name, float price, String factoryName, 
 
     @Override
     public String toString() {
-        return  super.toString()+ "Printer{" +
+        return  super.toString() + "Printer{" +
                 "printsPerMinute=" + printsPerMinute +
                 '}';
+    }
+
+    @Override
+    public float applyDiscount(float discount) {
+        float aux= super.getPrice();
+        System.out.println("The original price was:");
+        System.out.println(super.getPrice());
+        aux= aux* (1 - discount/100);
+        return aux;
     }
 }

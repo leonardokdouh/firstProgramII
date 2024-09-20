@@ -24,8 +24,8 @@ public class Notebook extends Technology{
 
     @Override
     public String toString() {
-        return super.toString() + "Notebook{" +
+        return super.toString() +  "Notebook{" +
                 "memory=" + memory +
-                '}';
+                '}' ;
     }
 }

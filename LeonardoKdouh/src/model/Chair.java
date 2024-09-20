@@ -1,6 +1,8 @@
 package model;
 
-public class Chair extends Furniture{
+import interfaces.IDiscount;
+
+public class Chair extends Furniture  implements IDiscount {
 
     private boolean hasWheels;
 
@@ -22,5 +24,14 @@ public class Chair extends Furniture{
         return super.toString()+"Chair{" +
                 "hasWheels=" + hasWheels +
                 '}';
+    }
+
+    @Override
+    public float applyDiscount(float discount) {
+        float aux= super.getPrice();
+        System.out.println("The original price was:");
+        System.out.println(super.getPrice());
+        aux= aux* (1 - discount/100);
+        return aux;
     }
 }
