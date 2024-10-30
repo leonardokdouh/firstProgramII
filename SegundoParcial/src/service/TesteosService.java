@@ -11,8 +11,8 @@ import java.util.*;
 
 public class TesteosService {
 
-    static Map<String, Map<Integer, Integer>> enfermos = new HashMap<>();
-    static Map<String,Map<Integer, Integer>> sanos = new HashMap<>();
+    public static Map<String, Map<Integer, Integer>> enfermos = new HashMap<String, Map<Integer, Integer>>();
+    public Map<String, Map<Integer, Integer>> sanos = new HashMap<String, Map<Integer, Integer>>();
 
     private static ObjectMapper myMapper;
 
@@ -23,19 +23,19 @@ public class TesteosService {
 
     //Metodo para testear, recibe una lista de personas y una lista de Kits
     public void testear(Set<Personas> setDePersonas) throws TemperatureExeption, IOException {
-            for(Personas person: setDePersonas) {
-                Map<Integer, Integer> midleMap = new HashMap<Integer, Integer>();
-                Integer temperature = (int) (Math.random() * (39 - 36 + 1) + 36);
-                midleMap.put(person.getDni(), temperature);
-                    if (temperature > 38) {
-                        enfermos.put("aislar", midleMap);
-                        //Si arrojo la excepcion, revienta todo.
-                        //aislar(person);
-                    }
-                    else {
-                        sanos.put("sanos", midleMap);
-                    }
+        Map<Integer, Integer> midleMap = new HashMap<Integer, Integer>();
+        for (Personas person : setDePersonas) {
+            Integer temperature = (int) (Math.random() * (39 - 36 + 1) + 36);
+            midleMap.put(person.getDni(), temperature);
+
+            if (temperature > 38) {
+                enfermos.put("aislar", midleMap);
+                //Si arrojo la excepcion, revienta todo.
+                //aislar(person);
+            } else {
+                sanos.put("sanos", midleMap);
             }
+        }
 
     }
 
@@ -56,8 +56,6 @@ public class TesteosService {
         mergedRequestParam.putAll(enfermos);
         myMapper.writeValue(new File(archivo), mergedRequestParam);
     }
-
-
 
 
 }
